@@ -66,14 +66,15 @@ const MyChats = ({ fetchAgain }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        My Chats
+
+        My Doubts
         <GroupChatModal>
           <Button
             d="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
-            New Group Chat
+            Create Doubt
           </Button>
         </GroupChatModal>
       </Box>
@@ -101,9 +102,8 @@ const MyChats = ({ fetchAgain }) => {
                 key={chat._id}
               >
                 <Text>
-                  {!chat.isGroupChat
-                    ? getSender(loggedUser, chat.users)
-                    : chat.chatName}
+                { chat.chatName}
+                  {/* {!chat.isGroupChat ? getSender(loggedUser, chat.users) : chat.chatName} */}
                 </Text>
                 {chat.latestMessage && (
                   <Text fontSize="xs">
