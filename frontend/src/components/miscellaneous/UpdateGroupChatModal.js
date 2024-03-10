@@ -248,15 +248,15 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 Update
               </Button>
             </FormControl>
-            <FormControl>
+            {/* <FormControl>
               <Input
                 placeholder="Add User to group"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
               />
-            </FormControl>
+            </FormControl> */}
 
-            {loading ? (
+            {/* {loading ? (
               <Spinner size="lg" />
             ) : (
               searchResult?.map((user) => (
@@ -266,13 +266,13 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                   handleFunction={() => handleAddUser(user)}
                 />
               ))
-            )}
+            )} */}
           </ModalBody>
-          <ModalFooter>
+          {/* <ModalFooter>
             <Button onClick={() => handleRemove(user)} colorScheme="red">
               Leave Group
             </Button>
-          </ModalFooter>
+          </ModalFooter> */}
         </ModalContent>
       </Modal>
     </>

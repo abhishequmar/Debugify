@@ -61,7 +61,11 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
   socket.on("setup", (userData) => {
-    socket.join(userData._id);
+    if (userData !== null && userData !== undefined) {
+      socket.join(userData._id);
+    } else {
+      console.error("userData._id is null or undefined");
+    }
     socket.emit("connected");
   });
 

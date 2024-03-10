@@ -19,6 +19,8 @@ import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
 
+
+
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName] = useState();
@@ -42,7 +44,7 @@ const GroupChatModal = ({ children }) => {
       return;
     }
 
-    setSelectedUsers([...selectedUsers, userToAdd]);
+    setSelectedUsers([...selectedUsers, user]);
   };
 
   const handleSearch = async (query) => {
@@ -79,7 +81,8 @@ const GroupChatModal = ({ children }) => {
   };
 
   const handleSubmit = async () => {
-    if (!groupChatName || !selectedUsers) {
+    // if (!groupChatName || !selectedUsers) {
+    if (!groupChatName) {  
       toast({
         title: "Please fill all the feilds",
         status: "warning",
@@ -107,7 +110,7 @@ const GroupChatModal = ({ children }) => {
       setChats([data, ...chats]);
       onClose();
       toast({
-        title: "New Group Chat Created!",
+        title: "New Doubt Created!",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -138,7 +141,7 @@ const GroupChatModal = ({ children }) => {
             d="flex"
             justifyContent="center"
           >
-            Create Group Chat
+            Create Doubt
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody d="flex" flexDir="column" alignItems="center">
@@ -149,14 +152,14 @@ const GroupChatModal = ({ children }) => {
                 onChange={(e) => setGroupChatName(e.target.value)}
               />
             </FormControl>
-            <FormControl>
+            {/* <FormControl>
               <Input
                 placeholder="Add Users eg: John, Piyush, Jane"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
               />
-            </FormControl>
-            <Box w="100%" d="flex" flexWrap="wrap">
+            </FormControl> */}
+            {/* <Box w="100%" d="flex" flexWrap="wrap">
               {selectedUsers.map((u) => (
                 <UserBadgeItem
                   key={u._id}
@@ -164,8 +167,8 @@ const GroupChatModal = ({ children }) => {
                   handleFunction={() => handleDelete(u)}
                 />
               ))}
-            </Box>
-            {loading ? (
+            </Box> */}
+            {/* {loading ? (
               // <ChatLoading />
               <div>Loading...</div>
             ) : (
@@ -178,11 +181,11 @@ const GroupChatModal = ({ children }) => {
                     handleFunction={() => handleGroup(user)}
                   />
                 ))
-            )}
+            )} */}
           </ModalBody>
           <ModalFooter>
             <Button onClick={handleSubmit} colorScheme="blue">
-              Create Chat
+              Submit
             </Button>
           </ModalFooter>
         </ModalContent>
