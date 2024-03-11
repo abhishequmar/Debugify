@@ -12,7 +12,15 @@ import { ChatState } from "../Context/ChatProvider";
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
 
-  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
+  const {
+    selectedChat,
+    setSelectedChat,
+    user,
+    myChats,
+    setMyChats,
+    allChats,
+    setAllChats,
+  } = ChatState();
 
   const toast = useToast();
 
@@ -25,8 +33,24 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
-      setChats(data);
+      const { data } = await axios.get("/api/chat", config); //ALl chats Data
+
+      const new_data = [];
+    const allc = [] ;
+      data.map((d) => {
+        d.users.map((ui) => {
+          if (ui._id == user._id) {
+            new_data.push(d);
+          } else {
+            allc.push(d) ;
+
+          }
+        });
+      });
+      console.log(allc); // Personal Chats Data
+
+      setMyChats(new_data);
+      setAllChats(allc);
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -57,6 +81,7 @@ const MyChats = ({ fetchAgain }) => {
       borderRadius="lg"
       borderWidth="1px"
     >
+      {/* My Doubts text and button */}
       <Box
         pb={3}
         px={3}
@@ -79,6 +104,7 @@ const MyChats = ({ fetchAgain }) => {
         </GroupChatModal>
       </Box>
 
+      {/* My Doubts scroll */}
       <Box
         d="flex"
         flexDir="column"
@@ -89,9 +115,9 @@ const MyChats = ({ fetchAgain }) => {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chats ? (
+        {myChats ? (
           <Stack overflowY="scroll">
-            {chats.map((chat) => (
+            {myChats.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
@@ -121,6 +147,8 @@ const MyChats = ({ fetchAgain }) => {
           <ChatLoading />
         )}
       </Box>
+
+      {/* All doubts heading */}
       <Box
         pb={3}
         px={3}
@@ -133,6 +161,7 @@ const MyChats = ({ fetchAgain }) => {
       >
         All Doubts
       </Box>
+      {/* All doubts scroll section */}
       <Box
         d="flex"
         flexDir="column"
@@ -143,9 +172,9 @@ const MyChats = ({ fetchAgain }) => {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chats ? (
+        {allChats ? (
           <Stack overflowY="scroll">
-            {chats.map((chat) => (
+            {allChats.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
