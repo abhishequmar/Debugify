@@ -7,6 +7,7 @@ import {
   TabPanels,
   Tabs,
   Text,
+  color,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
@@ -28,23 +29,27 @@ function Homepage() {
         d="flex"
         justifyContent="center"
         p={3}
-        bg="white"
+        bg="#2A263B"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="4xl" fontFamily="Work sans">
-        {/* Website Name */}
-          Debugify 
-          
+        <Text
+          fontSize="4xl"
+          fontFamily="Work sans"
+          fontWeight="bold"
+          color="white"
+        >
+          {/* Website Name */}
+          Debugify
         </Text>
       </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+      <Box bg="#2A263B" w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab color="white">Login</Tab>
+            <Tab color="white">Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

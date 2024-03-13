@@ -36,14 +36,13 @@ const MyChats = ({ fetchAgain }) => {
       const { data } = await axios.get("/api/chat", config); //ALl chats Data
 
       const new_data = [];
-    const allc = [] ;
+      const allc = [];
       data.map((d) => {
         d.users.map((ui) => {
           if (ui._id == user._id) {
             new_data.push(d);
           } else {
-            allc.push(d) ;
-
+            allc.push(d);
           }
         });
       });
@@ -75,7 +74,7 @@ const MyChats = ({ fetchAgain }) => {
       flexDir="column"
       alignItems="center"
       p={3}
-      bg="white"
+      bg="#2A263B"
       w={{ base: "100%", md: "31%" }}
       // h="50%"
       borderRadius="lg"
@@ -91,6 +90,7 @@ const MyChats = ({ fetchAgain }) => {
         w="100%"
         justifyContent="space-between"
         alignItems="center"
+        color="white"
       >
         My Doubts
         <GroupChatModal>
@@ -98,6 +98,7 @@ const MyChats = ({ fetchAgain }) => {
             d="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
+            bg="#1D1E1E"
           >
             Create Doubt
           </Button>
@@ -109,20 +110,20 @@ const MyChats = ({ fetchAgain }) => {
         d="flex"
         flexDir="column"
         p={3}
-        bg="#F8F8F8"
+        bg="#1D1E1E"
         w="100%"
         h="50%"
         borderRadius="lg"
         overflowY="hidden"
       >
         {myChats ? (
-          <Stack overflowY="scroll">
+          <Stack overflowY="scroll" bg="#1D1E1E" border={1}>
             {myChats.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
-                bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-                color={selectedChat === chat ? "white" : "black"}
+                bg={selectedChat === chat ? "#38B2AC" : "#262829"}
+                color="white"
                 px={3}
                 py={2}
                 borderRadius="lg"
@@ -158,6 +159,7 @@ const MyChats = ({ fetchAgain }) => {
         w="100%"
         justifyContent="space-between"
         alignItems="center"
+        color="white"
       >
         All Doubts
       </Box>
@@ -166,20 +168,20 @@ const MyChats = ({ fetchAgain }) => {
         d="flex"
         flexDir="column"
         p={3}
-        bg="#F8F8F8"
+        bg="#1D1E1E"
         w="100%"
         h="50%"
         borderRadius="lg"
         overflowY="hidden"
       >
         {allChats ? (
-          <Stack overflowY="scroll">
+          <Stack overflowY="scroll" bg="#1D1E1E">
             {allChats.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
-                bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-                color={selectedChat === chat ? "white" : "black"}
+                bg={selectedChat === chat ? "#38B2AC" : "#262829"}
+                color="white"
                 px={3}
                 py={2}
                 borderRadius="lg"
