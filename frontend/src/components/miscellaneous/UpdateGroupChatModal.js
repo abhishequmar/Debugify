@@ -65,6 +65,16 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   const handleRename = async () => {
     if (!groupChatName) return;
+    if (selectedChat.groupAdmin._id !== user._id) {
+      toast({
+        title: "Only admins can change doubt name!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
 
     try {
       setRenameLoading(true);
@@ -227,7 +237,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                   key={u._id}
                   user={u}
                   admin={selectedChat.groupAdmin}
-                  handleFunction={() => handleRemove(u)}
+                  // handleFunction={() => handleRemove(u)}
                 />
               ))}
             </Box>
