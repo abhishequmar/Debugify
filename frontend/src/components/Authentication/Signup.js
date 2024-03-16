@@ -134,6 +134,7 @@ const Signup = () => {
       <FormControl id="first-name" isRequired>
         <FormLabel color="white">Name</FormLabel>
         <Input
+          textColor="white"
           placeholder="Enter Your Name"
           onChange={(e) => setName(e.target.value)}
         />
@@ -141,6 +142,7 @@ const Signup = () => {
       <FormControl id="email" isRequired>
         <FormLabel color="white">Email Address</FormLabel>
         <Input
+          textColor="white"
           type="email"
           placeholder="Enter Your Email Address"
           onChange={(e) => setEmail(e.target.value)}
@@ -150,6 +152,7 @@ const Signup = () => {
         <FormLabel color="white">Password</FormLabel>
         <InputGroup size="md">
           <Input
+            textColor="white"
             type={show ? "text" : "password"}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
@@ -165,6 +168,7 @@ const Signup = () => {
         <FormLabel color="white">Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input
+            textColor="white"
             type={show ? "text" : "password"}
             placeholder="Confirm password"
             onChange={(e) => setConfirmpassword(e.target.value)}
@@ -179,6 +183,7 @@ const Signup = () => {
       <FormControl id="pic">
         <FormLabel color="white">Upload your Picture</FormLabel>
         <Input
+          textColor="white"
           type="file"
           p={1.5}
           accept="image/*"

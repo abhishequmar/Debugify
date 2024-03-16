@@ -19,8 +19,6 @@ import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
 
-
-
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName] = useState();
@@ -82,7 +80,7 @@ const GroupChatModal = ({ children }) => {
 
   const handleSubmit = async () => {
     // if (!groupChatName || !selectedUsers) {
-    if (!groupChatName) {  
+    if (!groupChatName) {
       toast({
         title: "Please fill all the feilds",
         status: "warning",
@@ -144,21 +142,28 @@ const GroupChatModal = ({ children }) => {
             Create Doubt
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody d="flex" flexDir="column" alignItems="center">
-            <FormControl>
+          <ModalBody d="flex" flexDir="column" alignItems="left">
+            <h2>Problem Statement</h2>
+            <FormControl paddingTop="5px">
               <Input
-                placeholder="Chat Name"
                 mb={3}
+                inputMode="text"
                 onChange={(e) => setGroupChatName(e.target.value)}
               />
             </FormControl>
-            {/* <FormControl>
+            <h2>Code</h2>
+            <FormControl paddingBottom="10px" paddingTop="5px">
               <Input
-                placeholder="Add Users eg: John, Piyush, Jane"
+                height="250px"
+                // width="500px"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
               />
-            </FormControl> */}
+            </FormControl>
+            <h2>Query</h2>
+            <FormControl paddingTop="5px">
+              <Input mb={1} onChange={(e) => handleSearch(e.target.value)} />
+            </FormControl>
             {/* <Box w="100%" d="flex" flexWrap="wrap">
               {selectedUsers.map((u) => (
                 <UserBadgeItem

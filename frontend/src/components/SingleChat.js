@@ -242,7 +242,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
+
               <Input
+                bg="#2A263B"
+                textColor="white"
                 variant="filled"
                 placeholder="Enter a message.."
                 value={newMessage}
